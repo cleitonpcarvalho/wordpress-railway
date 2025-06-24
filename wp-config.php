@@ -9,6 +9,12 @@ define('DB_COLLATE', '');
 define('WP_HOME', 'https://wordpress-railway-production-b244.up.railway.app');
 define('WP_SITEURL', 'https://wordpress-railway-production-b244.up.railway.app');
 
+// Forçar HTTPS para evitar loop de redirects
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'http') {
+    $_SERVER['HTTPS'] = 'on';
+}
+
+
 /** Autoload e chaves de segurança podem ficar padrão ou usar as variáveis de ambiente do WordPress */
 
 define('AUTH_KEY',         getenv('WORDPRESS_AUTH_KEY'));
